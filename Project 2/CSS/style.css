@@ -1,0 +1,81 @@
+.page-title::before {
+    background: url(../images/il_fullxfull.3427102715_atp2.webp) center;
+    background-size: cover;
+    content: "";
+    display: block;
+    height: 250px;
+}
+
+.page-title {
+    display: block;
+    text-align: center;
+    font-family: "Sigmar", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.title-page::before {
+    background: url(../images/d6lw0ik-6eb3100d-2a89-4798-9bfc-ce985c6f16af.png) center;
+    background-size: cover;
+    content: "";
+    display: block;
+    height: 450px;
+}
+
+.title-page {
+    display: block;
+    text-align: center;
+    font-family: "Sigmar", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@keyframes stretching {
+    0% {
+      width: 100px;
+    }
+    100% {
+      width: 200px;
+    }
+  }
+  
+  
+  .button {
+    /* animation-name: stretching;
+    animation-duration: 10s; */
+    display: block;
+    margin: 20px 0;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+
+  .slow {
+    animation-name: stretching;
+    animation-duration: 30s;
+    background-color: turquoise;
+  }
+
+  .fast {
+    animation-name: stretching;
+    animation-duration: 1s;
+    background-color: lightgreen;
+  }
+
+  .medium {
+    animation-name: stretching;
+    animation-duration: 2s;
+    background-color: lightseagreen;
+  }
+
+  .slow-medium {
+    animation-name: stretching;
+    animation-duration: 20s;
+    background-color: pink;
+  }
+
+  .medium-fast {
+    animation-name: stretching;
+    animation-duration: 3s;
+    background-color: lightskyblue;
+  }
