@@ -14,8 +14,16 @@ function init() {
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
+    const loader = new GLTFLoader(); // to load 3d models
+
+    loader.load('tutorials\three-00-starter\three-00-starter\assets\dog_shiny.gltf', function (gltf){
+        const dog = gltf.scene;
+        scene.add(dog);
+        dog.scale.set(2,2,2);
+    })
+
     const light = new THREE.DirectionalLight(0xffffff, 5);
-    light.position.set(1,1,5);
+    light.position.set(3,4,5);
     scene.add(light);
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -58,13 +66,6 @@ init();
 animate();
 // ~~~~~~~~~~~~~~~~ Initiate add-ons ~~~~~~~~~~~~~~~~
 const controls = new OrbitControls(camera, renderer.domElement);
-const loader = new GLTFLoader(); // to load 3d models
-
-loader.load('tutorials\three-00-starter\three-00-starter\assets\candle_model.gltf', function (gltf){
-    const candle = gltf.scene;
-    scene.add(candle);
-    candle.scale.set(2,2,2);
-})
 
 
 // →→→→→→ Follow next steps in tutorial: // https://threejs.org/docs/#manual/en/introduction/Creating-a-scene
