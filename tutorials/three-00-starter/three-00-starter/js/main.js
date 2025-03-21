@@ -2,7 +2,6 @@
 // https://threejs.org/docs/#manual/en/introduction/Creating-a-scene
 
 let scene, camera, renderer, cube;
-
 //~~~~~~~Import Three.js (also linked to as import map in HTML)~~~~~~
 import * as THREE from 'three';
 
@@ -10,43 +9,33 @@ import * as THREE from 'three';
 import { OrbitControls } from 'https://unpkg.com/three@0.162.0/examples/jsm/controls/OrbitControls.js';
 // import { GLTFLoader } from 'https://unpkg.com/three@0.162.0/examples/jsm/loaders/GLTFLoader.js'; // to load 3d models
 
-
-// ~~~~~~~~~~~~~~~~Create scene here~~~~~~~~~~~~~~~~
-// Create scene, camera, and renderer
-function init () {
+function init() {
+    // ~~~~~~~~~~~~~~~~Create scene here~~~~~~~~~~~~~~~~
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-    renderer = new THREE.WebGLRenderer({antialias: true});
+    renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    // ~~~~~~~~~~~~~~~~ Initiate add-ons ~~~~~~~~~~~~~~~~
-    const controls = new OrbitControls(camera, renderer.domElement);
-    // const loader = new GLTFLoader(); // to load 3d models
+    const geometry = new THREE.BoxGeometry( 2, 2, 2 ); 
+    //const material = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
+    
+    const texture = new THREE.TextureLoader().load('textures/grasslight-big.jpg');
+    const material = new THREE.MeshBasicMaterial({ map: texture });
+    cube = new THREE.Mesh( geometry, material ); 
+    scene.add( cube );
 
-    // Add a basic cube
-    const geometry = new THREE.BoxGeometry( 2, 2, 2 );
-    //const material = new THREE.MeshStandardMaterial({ color: 0x0000ff });
-    const texture = new THREE.TextureLoader().load('texture/grasslight-big.jpg');
-    const material = new THREE.MeshStandardMaterial({ map: texture });
-    cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-
-    camera.position.set(0, 1, 5); // Move camera back so we can see objects
+    camera.postion.z = 5;
 }
 
-
-// Animation loop
 function animate() {
     requestAnimationFrame(animate);
-    cube.rotation.x += 0.01; // Rotate cube
-    cube.rotation.y += 0.01; // Rotate cube
-    controls.update();
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
     renderer.render(scene, camera);
 }
-
-function onWindowResize(){
+function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -56,6 +45,9 @@ window.addEventListener('resize', onWindowResize, false);
 
 init();
 animate();
+// ~~~~~~~~~~~~~~~~ Initiate add-ons ~~~~~~~~~~~~~~~~
+const controls = new OrbitControls(camera, renderer.domElement);
+// const loader = new GLTFLoader(); // to load 3d models
 
 
 // →→→→→→ Follow next steps in tutorial: // https://threejs.org/docs/#manual/en/introduction/Creating-a-scene
