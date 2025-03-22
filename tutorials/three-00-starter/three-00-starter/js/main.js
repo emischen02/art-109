@@ -16,7 +16,7 @@ function init() {
 
     const loader = new GLTFLoader(); // to load 3d models
 
-    loader.load('tutorials\three-00-starter\three-00-starter\assets\dog_shiny.gltf', function (gltf){
+    loader.load('assets/dog_shiny.gltf', function (gltf){
         const dog = gltf.scene;
         scene.add(dog);
         dog.scale.set(2,2,2);
@@ -26,11 +26,11 @@ function init() {
     light.position.set(3,4,5);
     scene.add(light);
 
-    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    const geometry = new THREE.CapsuleGeometry( 1, 1, 1, 4 ); 
+    const geometry = new THREE.CapsuleGeometry( 1, 0, 1, 4 ); 
     //const material = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
     
     const texture = new THREE.TextureLoader().load('textures/grasslight-big.jpg');
