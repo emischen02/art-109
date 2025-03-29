@@ -22,7 +22,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'; // to load 3d m
 // ~~~~~~~~~~~~~~~~ Declare Global Variables~~~~~~~~~~~~~~~~
 let scene, camera, renderer, ball, dog;
 let mixer;
-
+let actionPant;
 
 // ~~~~~~~~~~~~~~~~ Initialize Scene in init() ~~~~~~~~~~~~~~~~
 function init() {
@@ -97,8 +97,8 @@ function init() {
         dog.position.y = -2; // set initial position
         mixer = new THREE.AnimationMixer(dog);
         const clips = gltf.animations;
-        //const clip = THREE.AnimationClip.findByName(clips, 'HeadAction');
-        //const action = mixer.clipAction(clip);
+        //const clipPant = THREE.AnimationClip.findByName(clips, 'pant');
+        //const actionPant = mixer.clipAction(clip);
         //action.play();
         clips.forEach(function(clip) {
             const action = mixer.clipAction(clip);
@@ -115,7 +115,31 @@ function init() {
 
 }
 
+// ~~~~~~~~~~~~~~~~ Event Listener
 
+let mousedown = false;
+let mouseIsDown;
+
+document.querySelector("body").addEventListener("mousedown", () => {
+    actionPant.play();
+    actionPant.paused = false;
+    mouseIsDown = true;
+    console.log('mousedown');
+})
+
+document.querySelector("body").addEventListener("mouseup", () => {
+    //actionPant.play();
+    mouseIsDown = false;
+    actionPant.paused = true;
+    console.log('mouseup');
+})
+
+document.querySelector("body").addEventListener("mousemove", () => {
+    if(mouseIsDown){
+        console.log('mousemove');
+        ball.rotation.x += .5;
+    }
+})
 
 // ~~~~~~~~~~~~~~~~ Animation Loop ~~~~~~~~~~~~~~~~
 // (similar to draw loop in p5.js, updates every frame)
