@@ -14,13 +14,14 @@ import * as THREE from 'three';
 
 
 // Import add-ons
-import { OrbitControls } from 'https://unpkg.com/three@0.162.0/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader } from 'https://unpkg.com/three@0.162.0/examples/jsm/loaders/GLTFLoader.js'; // to load 3d models
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'; // to load 3d models
 
 
 
 // ~~~~~~~~~~~~~~~~ Declare Global Variables~~~~~~~~~~~~~~~~
 let scene, camera, renderer, ball, dog;
+let mixer;
 
 
 // ~~~~~~~~~~~~~~~~ Initialize Scene in init() ~~~~~~~~~~~~~~~~
@@ -89,13 +90,13 @@ function init() {
     // --> Load glTF
     let mixer;
     // load dog model
-    loader.load('assets/dog_shiny.gltf', function (gltf) {
+    loader.load('dog_shiny.gltf', function (gltf) {
         dog = gltf.scene;
         scene.add(dog);
         dog.scale.set(2, 2, 2); // scale your model
         dog.position.y = -2; // set initial position
         mixer = new THREE.AnimationMixer(dog);
-        //const clips = gltf.animation;
+        const clips = gltf.animations;
         //const clip = THREE.AnimationClip.findByName(clips, 'HeadAction');
         //const action = mixer.clipAction(clip);
         //action.play();
