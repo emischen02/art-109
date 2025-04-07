@@ -88,9 +88,8 @@ function init() {
 
 
     // --> Load glTF
-    let mixer;
     // load dog model
-    loader.load('dog_shiny.gltf', function (gltf) {
+    loader.load('assets/dog_shiny.gltf', function (gltf) {
         dog = gltf.scene;
         scene.add(dog);
         dog.scale.set(2, 2, 2); // scale your model
