@@ -1,0 +1,26 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #f7f7f7;
+    padding: 2rem;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  .controls {
+    margin-top: 2rem;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  input[type="range"] {
+    width: 200px;
+    vertical-align: middle;
+  }
