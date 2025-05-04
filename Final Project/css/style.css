@@ -1,9 +1,9 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: "Tagesschrift", system-ui;
     margin: 0;
     padding: 40px;
     color: #333;
-    background-color: #fff;
+    background-color: white;
   }
   
   .container {
@@ -67,3 +67,59 @@ body {
   .btn:hover {
     background-color: #555;
   }
+
+  .song1 {
+    background-color: red;
+  }
+
+  .song2 {
+    background-color: orangered;
+  }
+
+  .song3 {
+    background-color: orange;
+  }
+
+  .song4 {
+    background-color: yellow;
+  }
+
+  .song5 {
+    background-color: greenyellow;
+  }
+
+  .song6 {
+    background-color: green;
+  }
+
+  .song7 {
+    background-color: turquoise;
+  }
+
+  .song8 {
+    background-color: blue;
+  }
+
+  .song9 {
+    background-color: blueviolet;
+  }
+
+  .song10 {
+    background-color: purple;
+  }
+ 
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+.column {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.left-column {
+    background-color: #f0f0f0;
+}
+.right-column {
+    background-color: #d0d0d0;
+}
